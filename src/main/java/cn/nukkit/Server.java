@@ -411,7 +411,6 @@ public class Server {
         this.logger.info(this.getLanguage().translateString("nukkit.server.license", this.getName()));
 
 
-
         this.consoleSender = new ConsoleCommandSender();
         this.commandMap = new SimpleCommandMap(this);
 
