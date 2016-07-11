@@ -874,6 +874,10 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         return 0;
     }
 
+    public int getPing() {
+        return this.interfaz.getNetworkLatency(this);
+    }
+
     public boolean sleepOn(Vector3 pos) {
         if (!this.isOnline()) {
             return false;
