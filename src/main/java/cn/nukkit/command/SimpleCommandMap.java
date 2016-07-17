@@ -58,9 +58,9 @@ import cn.nukkit.utils.Utils;
  * Nukkit Project
  */
 public class SimpleCommandMap implements CommandMap {
-    protected Map<String, Command> knownCommands = new HashMap<>();
+    protected final Map<String, Command> knownCommands = new HashMap<>();
 
-    private Server server;
+    private final Server server;
 
     public SimpleCommandMap(Server server) {
         this.server = server;

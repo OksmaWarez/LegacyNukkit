@@ -534,7 +534,7 @@ public class Item implements Cloneable {
     public static Class[] list = null;
 
     protected Block block = null;
-    protected int id;
+    protected final int id;
     protected int meta;
     protected boolean hasMeta = true;
     private byte[] tags = new byte[0];
@@ -735,7 +735,7 @@ public class Item implements Cloneable {
         initCreativeItems();
     }
 
-    private static ArrayList<Item> creative = new ArrayList<>();
+    private static final ArrayList<Item> creative = new ArrayList<>();
 
     private static void initCreativeItems() {
         clearCreativeItems();

@@ -15,7 +15,7 @@ import cn.nukkit.utils.TextFormat;
  */
 public abstract class Command {
 
-    private String name;
+    private final String name;
 
     private String nextLabel;
 

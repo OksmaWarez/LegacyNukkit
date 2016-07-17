@@ -17,6 +17,11 @@ import cn.nukkit.math.Vector3;
  */
 public abstract class BlockLiquid extends BlockTransparent {
 
+    public int adjacentSources = 0;
+    public final boolean[] isOptimalFlowDirection = {false, false, false, false};
+    public final int[] flowinCost = {0, 0, 0, 0};
+    private Vector3 temporalVector = null;
+
     protected BlockLiquid(int meta) {
         super(meta);
     }
