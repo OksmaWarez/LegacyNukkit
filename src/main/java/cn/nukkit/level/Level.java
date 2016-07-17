@@ -684,35 +684,32 @@ public class Level implements ChunkManager, Metadatable {
         }
         this.timings.doTickPending.stopTiming();
 
-		this.timings.doTickPending.stopTiming();
-		this.timings.entityTick.startTiming();
-		Timings.tickEntityTimer.startTiming();
+        this.timings.entityTick.startTiming();
+        Timings.tickEntityTimer.startTiming();
+        for (long id : new ArrayList<>(this.updateEntities.keySet())) {
+            Entity entity = this.updateEntities.get(id);
+            if (entity.closed || !entity.onUpdate(currentTick)) {
+                this.updateEntities.remove(id);
+            }
+        }
+        Timings.tickEntityTimer.stopTiming();
+        this.timings.entityTick.stopTiming();
 
-		for (long id : new ArrayList<>(this.updateEntities.keySet())) {
-			Entity entity = this.updateEntities.get(id);
-			if (entity.closed || !entity.onUpdate(currentTick)) {
-				this.updateEntities.remove(id);
-			}
-		}
+        this.timings.blockEntityTick.startTiming();
+        Timings.tickBlockEntityTimer.startTiming();
+        if (!this.updateBlockEntities.isEmpty()) {
+            for (long id : new ArrayList<>(this.updateBlockEntities.keySet())) {
+                if (!this.updateBlockEntities.get(id).onUpdate()) {
+                    this.updateBlockEntities.remove(id);
+                }
+            }
+        }
+        Timings.tickBlockEntityTimer.stopTiming();
+        this.timings.blockEntityTick.stopTiming();
 
-		Timings.tickEntityTimer.stopTiming();
-		this.timings.entityTick.stopTiming();
-		this.timings.blockEntityTick.startTiming();
-		Timings.tickBlockEntityTimer.startTiming();
-
-		if (!this.updateBlockEntities.isEmpty()) {
-			for (long id : new ArrayList<>(this.updateBlockEntities.keySet())) {
-				if (!this.updateBlockEntities.get(id).onUpdate()) {
-					this.updateBlockEntities.remove(id);
-				}
-			}
-		}
-
-		Timings.tickBlockEntityTimer.stopTiming();
-		this.timings.blockEntityTick.stopTiming();
-		this.timings.doTickTiles.startTiming();
-		this.tickChunks();
-		this.timings.doTickTiles.stopTiming();
+        this.timings.doTickTiles.startTiming();
+        this.tickChunks();
+        this.timings.doTickTiles.stopTiming();
 
         if (!this.changedBlocks.isEmpty()) {
             if (!this.players.isEmpty()) {
@@ -2394,9 +2391,9 @@ public class Level implements ChunkManager, Metadatable {
             return true;
         }
 
-		this.timings.doChunkUnload.startTiming();
-		
-		String index = Level.chunkHash(x, z);
+        this.timings.doChunkUnload.startTiming();
+
+        String index = Level.chunkHash(x, z);
 
         BaseFullChunk chunk = this.getChunk(x, z);
 
