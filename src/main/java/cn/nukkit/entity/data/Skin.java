@@ -103,6 +103,14 @@ public class Skin {
         this.setModel(model);
     }
 
+    public Skin(String base64) {
+        this(Base64.getDecoder().decode(base64));
+    }
+
+    public Skin(String base64, String model) {
+        this(Base64.getDecoder().decode(base64), model);
+    }
+
     public void parseBufferedImage(BufferedImage image) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         for (int y = 0; y < image.getHeight(); y++) {

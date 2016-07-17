@@ -23,6 +23,7 @@ import cn.nukkit.Server;
 
 /**
  * Thread that performs all RCON network work. A server.
+ *
  * @author Tee7even
  */
 public class RCONServer extends Thread {
@@ -78,7 +79,7 @@ public class RCONServer extends Thread {
     }
 
     public void run() {
-        while(this.running) {
+        while (this.running) {
             try {
                 synchronized (this.sendQueues) {
                     for (SocketChannel channel : this.sendQueues.keySet()) {
