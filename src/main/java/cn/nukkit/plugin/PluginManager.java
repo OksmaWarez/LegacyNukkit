@@ -570,7 +570,7 @@ public class PluginManager {
                 }
             }
         } catch (IllegalAccessException e) {
-            Server.getInstance().getLogger().logException(e);
+            this.server.getLogger().logException(e);
         }
     }
 
