@@ -7,13 +7,8 @@ package cn.nukkit.network.protocol;
 public class MoveEntityPacket extends DataPacket {
     public static final byte NETWORK_ID = ProtocolInfo.MOVE_ENTITY_PACKET;
 
-    public long eid;
-    public double x;
-    public double y;
-    public double z;
-    public double yaw;
-    public double headYaw;
-    public double pitch;
+    // eid, x, y, z, yaw, pitch
+    public Entry[] entities = new Entry[0];
 
     @Override
     public byte pid() {
@@ -21,26 +16,29 @@ public class MoveEntityPacket extends DataPacket {
     }
 
     @Override
+    public DataPacket clean() {
+        this.entities = new Entry[0];
+        return super.clean();
+    }
+
+    @Override
     public void decode() {
-        this.eid = this.getLong();
-        this.x = this.getFloat();
-        this.y = this.getFloat();
-        this.z = this.getFloat();
-        this.pitch = this.getByte() * (360d / 256d);
-        this.yaw = this.getByte() * (360d / 256d);
-        this.headYaw = this.getByte() * (360d / 256d);
+
     }
 
     @Override
     public void encode() {
         this.reset();
-        this.putLong(this.eid);
-        this.putFloat((float) this.x);
-        this.putFloat((float) this.y);
-        this.putFloat((float) this.z);
-        this.putByte((byte) (this.pitch / (360d / 256d)));
-        this.putByte((byte) (this.headYaw / (360d / 256d)));
-        this.putByte((byte) (this.yaw / (360d / 256d)));
+        this.putInt(this.entities.length);
+        for (Entry entry : this.entities) {
+            this.putLong(entry.eid);
+            this.putFloat((float) entry.x);
+            this.putFloat((float) entry.y);
+            this.putFloat((float) entry.z);
+            this.putFloat((float) entry.yaw);
+            this.putFloat((float) entry.headyaw);
+            this.putFloat((float) entry.pitch);
+        }
     }
 
     public static class Entry {
