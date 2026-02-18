@@ -34,6 +34,7 @@ import cn.nukkit.network.protocol.ExplodePacket;
 import cn.nukkit.network.protocol.FullChunkDataPacket;
 import cn.nukkit.network.protocol.HurtArmorPacket;
 import cn.nukkit.network.protocol.InteractPacket;
+import cn.nukkit.network.protocol.ItemFrameDropItemPacket;
 import cn.nukkit.network.protocol.LevelEventPacket;
 import cn.nukkit.network.protocol.LoginPacket;
 import cn.nukkit.network.protocol.MobArmorEquipmentPacket;

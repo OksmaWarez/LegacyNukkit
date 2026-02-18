@@ -26,6 +26,7 @@ import cn.nukkit.blockentity.BlockEntityChest;
 import cn.nukkit.blockentity.BlockEntityEnchantTable;
 import cn.nukkit.blockentity.BlockEntityFlowerPot;
 import cn.nukkit.blockentity.BlockEntityFurnace;
+import cn.nukkit.blockentity.BlockEntityItemFrame;
 import cn.nukkit.blockentity.BlockEntitySign;
 import cn.nukkit.blockentity.BlockEntitySkull;
 import cn.nukkit.command.Command;
