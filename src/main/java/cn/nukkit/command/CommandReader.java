@@ -55,6 +55,11 @@ public class CommandReader extends Thread implements InterruptibleThread {
         Long lastLine = System.currentTimeMillis();
         while (this.running) {
             if (Server.getInstance().getConsoleSender() == null || Server.getInstance().getPluginManager() == null) {
+                try {
+                    sleep(50);
+                } catch (InterruptedException e) {
+                    Server.getInstance().getLogger().logException(e);
+                }
                 continue;
             }
 
@@ -75,7 +80,7 @@ public class CommandReader extends Thread implements InterruptibleThread {
                     Server.getInstance().getLogger().logException(e);
                 }
 
-            } else if (System.currentTimeMillis() - lastLine <= 1) {
+            } else {
                 try {
                     sleep(40);
                 } catch (InterruptedException e) {
