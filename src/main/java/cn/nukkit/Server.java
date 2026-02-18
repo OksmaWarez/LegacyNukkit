@@ -238,6 +238,8 @@ public class Server {
         instance = this;
         this.logger = logger;
 
+        Timings.init();
+
         this.filePath = filePath;
         if (!new File(dataPath + "worlds/").exists()) {
             new File(dataPath + "worlds/").mkdirs();
