@@ -55,12 +55,6 @@ public abstract class BlockLiquid extends BlockTransparent {
     public int[][] getDrops(Item item) {
         return new int[0][];
     }
-
-    public int adjacentSources = 0;
-    public boolean[] isOptimalFlowDirection = {false, false, false, false};
-    public int[] flowinCost = {0, 0, 0, 0};
-    private Vector3 temporalVector = null;
-
     public float getFluidHeightPercent() {
         float d = (float) this.meta;
         if (d >= 8) {
