@@ -32,7 +32,8 @@ LegacyNukkit has a few advantages over PocketMine-MP for 0.14.3:
 * Having a similar structure with PocketMine-MP, because of this it's easy to contribute to LegacyNukkit's development. And it is also easy to rewrite legacy PocketMine-MP plugins into Nukkit plugins.
 * Being in semi-active development, more and more features and enhancements are being backported from later versions.
 
-This in no means is a complete product, and should not be used in a production environment. By using this you agree that you will take appropriate measures like taking backups and not cursing the developers every time you encounter a bug. This is Minecraft: Pocket Edition Alpha after all.
+> [!WARNING]
+> This in no means is a complete product, and should not be used in a production environment. By using this you agree that you will take appropriate measures like taking backups and not cursing the developers every time you encounter a bug. Any developers that have made any contributions to this project are not responsible for any data that is deleted, lost or otherwise mishandled during use of LegacyNukkit. This is Minecraft: Pocket Edition Alpha after all, and alpha is buggy.
 
 Build JAR file
 -------------
